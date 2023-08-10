@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh6whfmk5wlck"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_ix61d"]
+[ext_resource type="Texture2D" uid="uid://bcfibcwi2n3f0" path="res://graphics/background.png" id="2_2cypw"]
+[ext_resource type="PackedScene" uid="uid://bqxojwhc2m1fa" path="res://scenes/player.tscn" id="2_pld5v"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ix61d")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, 1.90735e-06)
+scale = Vector2(50000, 49707.3)
+texture = ExtResource("2_2cypw")
+
+[node name="UniverseLimit" type="StaticBody2D" parent="."]
+
+[node name="UnivsereLimitHitbox" type="CollisionPolygon2D" parent="UniverseLimit"]
+scale = Vector2(2.28, 2.28)
+polygon = PackedVector2Array(-10000, -9942, 9993, -9936, 10027, 9947, -10088, 9998, -9999, -9941, -10697, -10522, -10647, 11039, 10784, 10681, 10764, -10423, -10698, -10524)
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_pld5v")]

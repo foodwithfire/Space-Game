@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://nlwgfniivnqd"]
+
+[ext_resource type="Texture2D" uid="uid://btvjgohv6jgsy" path="res://graphics/planet/planet.png" id="1_bt1q3"]
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_ovt6l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkkx6"]
+radius = 18.466
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0w3x"]
+radius = 128.355
+
+[node name="Planet" type="Node2D"]
+position = Vector2(0, 2)
+scale = Vector2(7.02738, 7.02738)
+script = ExtResource("1_ovt6l")
+
+[node name="CollisionDetector" type="Area2D" parent="."]
+
+[node name="CollisionDetectorHitbox" type="CollisionShape2D" parent="CollisionDetector"]
+scale = Vector2(11.1147, 11.1147)
+shape = SubResource("CircleShape2D_gkkx6")
+
+[node name="PlaneteBody" type="StaticBody2D" parent="."]
+
+[node name="PlanetImage" type="Sprite2D" parent="PlaneteBody"]
+texture = ExtResource("1_bt1q3")
+
+[node name="PlanetHitbox" type="CollisionShape2D" parent="PlaneteBody"]
+shape = SubResource("CircleShape2D_o0w3x")
+
+[connection signal="area_shape_entered" from="CollisionDetector" to="." method="_on_collision_detector_area_shape_entered"]

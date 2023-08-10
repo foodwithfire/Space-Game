@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://r0c1pcaybgxh"]
+
+[ext_resource type="Script" path="res://scripts/planet_defender.gd" id="1_03yv6"]
+[ext_resource type="Texture2D" uid="uid://cdcpgghh12ybx" path="res://graphics/planet/planet_defender.png" id="1_bs04r"]
+
+[node name="PlanetDefender" type="Area2D"]
+scale = Vector2(0.193615, 0.274721)
+script = ExtResource("1_03yv6")
+
+[node name="PlanetDefenderImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_bs04r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-96, -14, -96, 80, 90, 80, 90, -14, -3, -106)

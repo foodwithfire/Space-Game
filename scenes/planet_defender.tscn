@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://r0c1pcaybgxh"]
+
+[ext_resource type="Script" path="res://scripts/planet_defender.gd" id="1_03yv6"]
+[ext_resource type="Texture2D" uid="uid://cdcpgghh12ybx" path="res://graphics/planet/planet_defender.png" id="1_bs04r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jskeo"]
+radius = 115.521
+
+[node name="PlanetDefender" type="Area2D"]
+script = ExtResource("1_03yv6")
+
+[node name="PlanetDefenderHitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-96, -14, -96, 80, 90, 80, 90, -14, -3, -106)
+
+[node name="PlanetDefenderImage" type="Sprite2D" parent="PlanetDefenderHitbox"]
+texture = ExtResource("1_bs04r")
+
+[node name="PlanetSight" type="Area2D" parent="."]
+scale = Vector2(9, 9)
+
+[node name="PlanetSightShape" type="CollisionShape2D" parent="PlanetSight"]
+scale = Vector2(1.00563, 1)
+shape = SubResource("CircleShape2D_jskeo")
+
+[connection signal="body_entered" from="PlanetSight" to="." method="player_entered_sight"]
+[connection signal="body_exited" from="PlanetSight" to="." method="player_exited_sight"]

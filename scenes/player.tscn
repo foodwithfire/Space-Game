@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqxojwhc2m1fa"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_6y0p8"]
+[ext_resource type="Script" path="res://scripts/reactor_particles.gd" id="2_lhylt"]
+[ext_resource type="Texture2D" uid="uid://d0qgu4rnguks6" path="res://graphics/player/player.png" id="2_vgeqc"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s6gnx"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 800.0
+initial_velocity_max = 900.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 5.0
+color = Color(1, 0.796078, 0, 1)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.439999, 0.439999)
+script = ExtResource("1_6y0p8")
+
+[node name="Particles" type="Node2D" parent="."]
+position = Vector2(0, -38.6364)
+
+[node name="Particle1" type="GPUParticles2D" parent="Particles"]
+position = Vector2(-56.8183, 145.455)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_s6gnx")
+randomness = 1.0
+script = ExtResource("2_lhylt")
+
+[node name="Particle2" type="GPUParticles2D" parent="Particles"]
+position = Vector2(59.091, 145.455)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_s6gnx")
+randomness = 1.0
+script = ExtResource("2_lhylt")
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_vgeqc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -121, -1, -121, -115, 75, -67, 75, -97, 128, -17, 128, -47, 75, 49, 75, 19, 128, 99, 128, 69, 75, 114, 75, 1, -121)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
