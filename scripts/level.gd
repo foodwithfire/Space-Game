@@ -7,11 +7,12 @@ const planet_spawn_chance = 50
 var planet_scene = preload("res://scenes/planet.tscn")
 var planet_size = 6000
 
-var missile_scene = preload("res://scenes/player_missile.tscn")
+var player_missile_scene = preload("res://scenes/player_missile.tscn")
+var pladef_missile_scene = preload("res://scenes/planet_defender_missile.tscn")
 
 func _ready():
 	var emitter = get_node("Player")
-	emitter.missile_shot.connect(create_missile)
+	emitter.missile_shot.connect(create_player_missile)
 	
 	var planet_offset = 2000
 	var offset = 2000
@@ -28,14 +29,21 @@ func _process(delta):
 	pass
 
 
-func create_missile(player_direction):
-	var missile1 = missile_scene.instantiate()
+func create_player_missile(direction):
+	var missile1 = player_missile_scene.instantiate()
 	missile1.position = $Player/LeftMissilePosition.global_position
-	missile1.rotation_degrees = rad_to_deg(player_direction.angle())
-	missile1.direction = player_direction
+	missile1.rotation_degrees = rad_to_deg(direction.angle())
+	missile1.direction = direction
 	$PlayerMissiles.add_child(missile1)
-	var missile2 = missile_scene.instantiate()
+	var missile2 = player_missile_scene.instantiate()
 	missile2.position = $Player/RightMissilePosition.global_position
-	missile2.rotation_degrees = rad_to_deg(player_direction.angle())
-	missile2.direction = player_direction
+	missile2.rotation_degrees = rad_to_deg(direction.angle())
+	missile2.direction = direction
 	$PlayerMissiles.add_child(missile2)
+
+
+func create_pladef_missile(direction, pos):
+	var missile = pladef_missile_scene.instantiate()
+	missile.position = pos
+	missile.rotation_degrees = rad_to_deg(direction.angle())
+	missile.direction = direction

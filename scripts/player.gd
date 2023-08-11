@@ -31,7 +31,7 @@ func player_input():
 	if Input.is_action_pressed("left click") and can_shoot:
 		can_shoot = false
 		missile_shot.emit(direction)
-		$PlayerMissileTimer.start()
+		$MissileTimer.start()
 
 
 func _on_player_missile_timer_timeout():

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal pladef_missile_shot
+
 var speeds = [0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 var angle = 0
 var direction
@@ -9,6 +11,7 @@ var radius = sight * 40
 
 var player
 var player_in_sight = false
+var can_shoot = true
 
 
 func _ready():
@@ -30,7 +33,11 @@ func _process(delta):
 	else:
 		look_at(player.position)
 		rotation_degrees += 90
-
+		if can_shoot:
+			var _direction = Vector2(player.position - position).normalized()
+			can_shoot = false
+			pladef_missile_shot.emit(_direction)
+			$MissileTimer.start()
 
 func shuffleList(list):
 	var shuffledList = [] 

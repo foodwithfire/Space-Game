@@ -13,9 +13,10 @@ rotation = 1.5708
 script = ExtResource("1_l3t65")
 
 [node name="PlayerMissileImage" type="Sprite2D" parent="."]
+position = Vector2(15, -4.00005)
 texture = ExtResource("1_i08m8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -4)
+position = Vector2(15, -4.00005)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qpuv2")

@@ -10,7 +10,7 @@ radius = 115.521
 script = ExtResource("1_03yv6")
 
 [node name="PlanetDefenderHitbox" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-96, -14, -96, 80, 90, 80, 90, -14, -3, -106)
+polygon = PackedVector2Array(-40, -47, -86, 97, 97, 97, 51, -46, 4, -96)
 
 [node name="PlanetDefenderImage" type="Sprite2D" parent="PlanetDefenderHitbox"]
 texture = ExtResource("1_bs04r")
@@ -21,6 +21,13 @@ scale = Vector2(9, 9)
 [node name="PlanetSightShape" type="CollisionShape2D" parent="PlanetSight"]
 scale = Vector2(1.00563, 1)
 shape = SubResource("CircleShape2D_jskeo")
+
+[node name="MissileTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="MissilePosition" type="Marker2D" parent="."]
+position = Vector2(4, -96)
 
 [connection signal="body_entered" from="PlanetSight" to="." method="player_entered_sight"]
 [connection signal="body_exited" from="PlanetSight" to="." method="player_exited_sight"]

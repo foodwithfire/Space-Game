@@ -22,4 +22,6 @@ polygon = PackedVector2Array(-10000, -9942, 9993, -9936, 10027, 9947, -10088, 99
 
 [node name="PlayerMissiles" type="Node2D" parent="."]
 
+[node name="PlaDefMissiles" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("2_pld5v")]
