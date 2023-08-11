@@ -1,7 +1,5 @@
 extends Area2D
 
-signal pladef_missile_shot
-
 var speeds = [0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 var angle = 0
 var direction
@@ -12,7 +10,7 @@ var radius = sight * 40
 var player
 var player_in_sight = false
 var can_shoot = true
-
+var pladef_missile_scene = preload("res://scenes/planet_defender_missile.tscn")
 
 func _ready():
 	player = $".."/".."/".."/".."/Player
@@ -21,10 +19,9 @@ func _ready():
 		direction = 1
 	else:
 		direction = -1
-
-
+ 
 func _process(delta):
-	$PlanetDefenderHitbox.set_global_scale(Vector2(0.5, 0.6))
+	$PlanetDefenderHitbox.set_global_scale(Vector2(0.4, 0.5))
 	$PlanetSight.set_global_scale(Vector2(sight, sight))
 	if not player_in_sight:
 		position.x = cos(angle) * radius
@@ -36,8 +33,13 @@ func _process(delta):
 		if can_shoot:
 			var _direction = Vector2(player.position - position).normalized()
 			can_shoot = false
-			pladef_missile_shot.emit(_direction)
 			$MissileTimer.start()
+			
+			var missile = pladef_missile_scene.instantiate()
+			missile.global_position = player.position
+			get_parent().add_child(missile)
+			print("player position: ", player.global_position, " - missile position: ", missile.global_position)
+
 
 func shuffleList(list):
 	var shuffledList = [] 
@@ -56,3 +58,8 @@ func player_entered_sight(body):
 func player_exited_sight(body):
 	if body == player:
 		player_in_sight = false
+
+
+func _on_missile_timer_timeout():
+	can_shoot = true
+	$MissileTimer.start()

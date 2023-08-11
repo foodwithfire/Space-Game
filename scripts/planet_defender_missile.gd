@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 5000
+const speed = 0
 
 var direction
 
@@ -10,4 +10,5 @@ func _ready():
 
 
 func _process(delta):
-	position += direction * delta * speed
+	# position += direction * delta * speed
+	pass

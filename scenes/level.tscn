@@ -7,10 +7,12 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ix61d")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(7.62939e-06, 1.90735e-06)
-scale = Vector2(50000, 49707.3)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(7, 7)
 texture = ExtResource("2_2cypw")
+region_enabled = true
+region_rect = Rect2(0, 0, 70000, 70000)
 
 [node name="UniverseLimit" type="StaticBody2D" parent="."]
 

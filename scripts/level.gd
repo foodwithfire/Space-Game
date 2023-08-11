@@ -8,7 +8,6 @@ var planet_scene = preload("res://scenes/planet.tscn")
 var planet_size = 6000
 
 var player_missile_scene = preload("res://scenes/player_missile.tscn")
-var pladef_missile_scene = preload("res://scenes/planet_defender_missile.tscn")
 
 func _ready():
 	var emitter = get_node("Player")
@@ -40,10 +39,3 @@ func create_player_missile(direction):
 	missile2.rotation_degrees = rad_to_deg(direction.angle())
 	missile2.direction = direction
 	$PlayerMissiles.add_child(missile2)
-
-
-func create_pladef_missile(direction, pos):
-	var missile = pladef_missile_scene.instantiate()
-	missile.position = pos
-	missile.rotation_degrees = rad_to_deg(direction.angle())
-	missile.direction = direction
