@@ -1,14 +1,17 @@
 extends Area2D
 
-const speed = 0
+const speed = 5000
 
 var direction
 
 
 func _ready():
-	pass
+	$AutodestructionTimer.start()
 
 
 func _process(delta):
-	# position += direction * delta * speed
-	pass
+	position += direction * speed * delta
+
+
+func _on_timer_timeout():
+	queue_free()

@@ -6,8 +6,12 @@ var direction
 
 
 func _ready():
-	pass
+	$AutodestructionTimer.start()
 
 
 func _process(delta):
 	position += direction * delta * speed
+
+
+func _on_autodestruction_timer_timeout():
+	queue_free()

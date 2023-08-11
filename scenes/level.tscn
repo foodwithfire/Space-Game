@@ -7,7 +7,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ix61d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Image" type="Sprite2D" parent="."]
 texture_repeat = 2
 scale = Vector2(7, 7)
 texture = ExtResource("2_2cypw")
@@ -16,14 +16,12 @@ region_rect = Rect2(0, 0, 70000, 70000)
 
 [node name="UniverseLimit" type="StaticBody2D" parent="."]
 
-[node name="UnivsereLimitHitbox" type="CollisionPolygon2D" parent="UniverseLimit"]
+[node name="Hitbox" type="CollisionPolygon2D" parent="UniverseLimit"]
 scale = Vector2(2.28, 2.28)
 polygon = PackedVector2Array(-10000, -9942, 9993, -9936, 10027, 9947, -10088, 9998, -9999, -9941, -10697, -10522, -10647, 11039, 10784, 10681, 10764, -10423, -10698, -10524)
 
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="PlayerMissiles" type="Node2D" parent="."]
-
-[node name="PlaDefMissiles" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_pld5v")]

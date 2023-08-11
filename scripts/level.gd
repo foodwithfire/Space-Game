@@ -4,6 +4,8 @@ const screen = Vector2(universe_size * 2, universe_size * 2)
 const universe_size = 18000
 const planet_spawn_chance = 50
 
+var tick = 0
+
 var planet_scene = preload("res://scenes/planet.tscn")
 var planet_size = 6000
 
@@ -25,7 +27,7 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	tick += delta
 
 
 func create_player_missile(direction):

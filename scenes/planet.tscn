@@ -11,12 +11,12 @@ position = Vector2(0, 2)
 scale = Vector2(7, 7)
 script = ExtResource("1_ovt6l")
 
-[node name="PlaneteBody" type="StaticBody2D" parent="."]
+[node name="Body" type="StaticBody2D" parent="."]
 
-[node name="PlanetImage" type="Sprite2D" parent="PlaneteBody"]
+[node name="Image" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_bt1q3")
 
-[node name="PlanetHitbox" type="CollisionShape2D" parent="PlaneteBody"]
+[node name="Hitbox" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_o0w3x")
 
 [node name="PlanetDefenders" type="Node2D" parent="."]

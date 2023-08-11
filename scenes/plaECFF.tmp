@@ -27,6 +27,7 @@ scale = Vector2(1.00563, 1)
 shape = SubResource("CircleShape2D_jskeo")
 
 [node name="MissileTimer" type="Timer" parent="."]
+wait_time = 0.6
 one_shot = true
 
 [connection signal="body_entered" from="Sight" to="." method="player_entered_sight"]

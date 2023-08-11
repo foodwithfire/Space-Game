@@ -8,12 +8,14 @@ var sight = randi_range(5, 10)
 var radius = sight * 40
 
 var player
+var level
 var player_in_sight = false
 var can_shoot = true
 var pladef_missile_scene = preload("res://scenes/planet_defender_missile.tscn")
 
 func _ready():
 	player = $".."/".."/".."/".."/Player
+	level = $".."/".."/".."/".."
 	speed = shuffleList(speeds)[0]
 	if randi_range(0, 1) == 0:
 		direction = 1
@@ -21,8 +23,8 @@ func _ready():
 		direction = -1
  
 func _process(delta):
-	$PlanetDefenderHitbox.set_global_scale(Vector2(0.4, 0.5))
-	$PlanetSight.set_global_scale(Vector2(sight, sight))
+	$Hitbox.set_global_scale(Vector2(0.4, 0.5))
+	$Sight.set_global_scale(Vector2(sight, sight))
 	if not player_in_sight:
 		position.x = cos(angle) * radius
 		position.y = sin(angle) * radius
@@ -30,15 +32,16 @@ func _process(delta):
 	else:
 		look_at(player.position)
 		rotation_degrees += 90
-		if can_shoot:
-			var _direction = Vector2(player.position - position).normalized()
+		if can_shoot and level.tick > 5:
+			var _direction = Vector2(player.position - global_position).normalized()
 			can_shoot = false
 			$MissileTimer.start()
 			
 			var missile = pladef_missile_scene.instantiate()
-			missile.global_position = player.position
+			missile.position = $Hitbox/MissilePosition.global_position
+			missile.direction = _direction
+			missile.rotation_degrees = rad_to_deg(_direction.angle())
 			get_parent().add_child(missile)
-			print("player position: ", player.global_position, " - missile position: ", missile.global_position)
 
 
 func shuffleList(list):

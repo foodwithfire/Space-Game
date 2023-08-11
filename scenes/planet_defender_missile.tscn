@@ -8,12 +8,19 @@ radius = 5.0
 height = 72.0
 
 [node name="PlaDefMissile" type="Area2D"]
+top_level = true
 rotation = 1.5708
 script = ExtResource("1_6dr1n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Image" type="Sprite2D" parent="."]
 texture = ExtResource("1_5dt8y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_74x8b")
+
+[node name="AutodestructionTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="AutodestructionTimer" to="." method="_on_timer_timeout"]
