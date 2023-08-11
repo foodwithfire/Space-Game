@@ -7,8 +7,12 @@ const planet_spawn_chance = 50
 var planet_scene = preload("res://scenes/planet.tscn")
 var planet_size = 6000
 
+var missile_scene = preload("res://scenes/player_missile.tscn")
 
 func _ready():
+	var emitter = get_node("Player")
+	emitter.missile_shot.connect(create_missile)
+	
 	var planet_offset = 2000
 	var offset = 2000
 	for y in range(screen.y/planet_size):
@@ -22,3 +26,16 @@ func _ready():
 
 func _process(delta):
 	pass
+
+
+func create_missile(player_direction):
+	var missile1 = missile_scene.instantiate()
+	missile1.position = $Player/LeftMissilePosition.global_position
+	missile1.rotation_degrees = rad_to_deg(player_direction.angle())
+	missile1.direction = player_direction
+	$PlayerMissiles.add_child(missile1)
+	var missile2 = missile_scene.instantiate()
+	missile2.position = $Player/RightMissilePosition.global_position
+	missile2.rotation_degrees = rad_to_deg(player_direction.angle())
+	missile2.direction = player_direction
+	$PlayerMissiles.add_child(missile2)

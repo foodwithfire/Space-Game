@@ -47,3 +47,17 @@ polygon = PackedVector2Array(0, -121, -1, -121, -115, 75, -67, 75, -97, 128, -17
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="LeftMissilePosition" type="Marker2D" parent="."]
+position = Vector2(-84.0911, -52.2728)
+scale = Vector2(1, 1)
+
+[node name="RightMissilePosition" type="Marker2D" parent="."]
+position = Vector2(84.0911, -52.2728)
+scale = Vector2(1, 1)
+
+[node name="PlayerMissileTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="PlayerMissileTimer" to="." method="_on_player_missile_timer_timeout"]
