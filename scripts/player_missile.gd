@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 3000
+const speed = 5000
 
 var direction
 

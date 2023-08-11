@@ -50,11 +50,9 @@ position_smoothing_speed = 10.0
 
 [node name="LeftMissilePosition" type="Marker2D" parent="."]
 position = Vector2(-84.0911, -52.2728)
-scale = Vector2(1, 1)
 
 [node name="RightMissilePosition" type="Marker2D" parent="."]
 position = Vector2(84.0911, -52.2728)
-scale = Vector2(1, 1)
 
 [node name="PlayerMissileTimer" type="Timer" parent="."]
 wait_time = 0.3
