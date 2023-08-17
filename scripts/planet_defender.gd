@@ -13,6 +13,8 @@ var player_in_sight = false
 var can_shoot = true
 var pladef_missile_scene = preload("res://scenes/planet_defender_missile.tscn")
 
+var health = 100
+
 func _ready():
 	player = $".."/".."/".."/".."/Player
 	level = $".."/".."/".."/".."
@@ -23,6 +25,9 @@ func _ready():
 		direction = -1
  
 func _process(delta):
+	if health <= 0:
+		$".."/"..". planetdef_amount -= 1
+		queue_free()
 	$Hitbox.set_global_scale(Vector2(0.4, 0.5))
 	$Sight.set_global_scale(Vector2(sight, sight))
 	if not player_in_sight:
@@ -38,6 +43,7 @@ func _process(delta):
 			$MissileTimer.start()
 			
 			var missile = pladef_missile_scene.instantiate()
+			missile.player = player
 			missile.position = $Hitbox/MissilePosition.global_position
 			missile.direction = _direction
 			missile.rotation_degrees = rad_to_deg(_direction.angle())

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://wtg4mgxge5fl"]
+
+[ext_resource type="Script" path="res://scripts/cursor.gd" id="1_7gtlw"]
+[ext_resource type="Texture2D" uid="uid://dju07bqnojwc1" path="res://graphics/cursor.png" id="1_om8u0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drcpf"]
+radius = 5.0
+
+[node name="Cursor" type="Area2D"]
+top_level = true
+collision_layer = 33
+collision_mask = 19
+script = ExtResource("1_7gtlw")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_drcpf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(38, 95)
+rotation = -0.382135
+texture = ExtResource("1_om8u0")

@@ -50,6 +50,15 @@ left={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="planet"
+2d_physics/layer_3="missile"
+2d_physics/layer_4="ennemy_missile"
+2d_physics/layer_5="ennemy"
+2d_physics/layer_6="cursor"
+
 [rendering]
 
 renderer/rendering_method="mobile"

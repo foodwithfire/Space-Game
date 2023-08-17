@@ -12,6 +12,8 @@ var planet_size = 6000
 var player_missile_scene = preload("res://scenes/player_missile.tscn")
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	var emitter = get_node("Player")
 	emitter.missile_shot.connect(create_player_missile)
 	
